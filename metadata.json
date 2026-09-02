@@ -1,0 +1,6 @@
+{
+  "name": "WayFinder",
+  "description": "Tourism intelligence platform for travelers visiting India with cultural guides, smart itineraries, fair price checks, and safety intelligence.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

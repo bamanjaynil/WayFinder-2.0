@@ -1,0 +1,78 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with travel preferences and settings",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "travelStyle": { "type": "string" },
+        "dietaryPreference": { "type": "string" },
+        "interests": { "type": "array", "items": { "type": "string" } },
+        "savedPlaceIds": { "type": "array", "items": { "type": "string" } },
+        "selectedCityId": { "type": "string" },
+        "language": { "type": "string" },
+        "notificationPreferences": { "type": "object" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "email"]
+    },
+    "Trip": {
+      "title": "Trip",
+      "description": "Planned trip itineraries for travelers",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "cityId": { "type": "string" },
+        "cityName": { "type": "string" },
+        "startDate": { "type": "string" },
+        "endDate": { "type": "string" },
+        "daysCount": { "type": "number" },
+        "placeIds": { "type": "array", "items": { "type": "string" } },
+        "itinerary": { "type": "array", "items": { "type": "object" } },
+        "travelPace": { "type": "string" },
+        "travelStyle": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "title", "cityId"]
+    },
+    "Feedback": {
+      "title": "Feedback",
+      "description": "Crowdsourced ground-truth updates and reviews from travelers",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "placeId": { "type": "string" },
+        "userId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "type": { "type": "string" },
+        "rating": { "type": "number" },
+        "feedbackType": { "type": "string" },
+        "details": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "placeId", "details"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "entity": "User",
+      "description": "User profiles"
+    },
+    "/users/{userId}/trips/{tripId}": {
+      "entity": "Trip",
+      "description": "User trips"
+    },
+    "/feedbacks/{feedbackId}": {
+      "entity": "Feedback",
+      "description": "Place reviews and ground-truth corrections"
+    }
+  }
+}
